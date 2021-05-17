@@ -1,24 +1,31 @@
 import { getModelForClass } from '@typegoose/typegoose';
-import { Request, Response, static } from 'express';
+import { Request, Response} from 'express';
 import { Todo } from '../../../models/todo/Todo';
 
 class TodoController {
   static todoModel=getModelForClass(Todo);
-  public static findAll=(res:Request, res:Response)=>{
-    return res.render();
+  
+  static findAll=async (req:Request, res:Response)=>{
+    
+    return res.json(await TodoController.todoModel.find());
   }
 
-  public static async create=(req:Request, res:Response)=>{
-    try{
-      const todo=await TodoController.todoModel.create(req.body);
-      res.status(201).json({
-        status:'Todo added successfully',
-        data:todo
-      });
-    }
-    catch(e){
-      console.log(err);
-    }
+ static create=async( req:Request, res:Response)=>{
+    
+    return res.json(await TodoController.todoModel.create(req.body));
+    
+  }
+static update=async (req:Request, res:Response)=>{
+    const {id}=req.params;
+    return res.json(await TodoController.todoModel.updateOne({_id:id}, req.body));
+    
+  }
+static findOne= async(req:Request, res:Response)=>{
+  const {id}=req.params;
+  return res.json(await TodoController.todoModel.findOne({_id:id}));
+}
+ static delete=async (req:Request, res:Response)=>{
+      res.json(await TodoController.todoModel.deleteOne({_id:req.params.id}));
   }
 }
 

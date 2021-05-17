@@ -1,15 +1,24 @@
+/* eslint-disable no-console */
 import { config } from 'dotenv';
+import { DatabaseConnector } from '../app.database';
 import { app } from './app.bootstrap';
 
 
 config({path:'config.env'});
+app.set('name', process.env.APP_NAME);
 
 const init= async ()=>{
-  app.listen(process.env.PORT, ()=>{
-    // eslint-disable-next-line no-console
-    console.log(`the ${app.get('name')} is listening on port : ${process.env.PORT}`);
-  });
-  
+  const db=await DatabaseConnector.initDatabase();
+  if(db){
+    app.listen(process.env.PORT, ()=>{
+      console.log(`${app.get('name')} is listening on port ${process.env.PORT}`);
+    });
+    
+  }
+  else{
+    console.log('Problem with DB connection');
+  }
 };
+  
 
 init();

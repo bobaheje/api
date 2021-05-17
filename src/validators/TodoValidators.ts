@@ -1,9 +1,10 @@
 import { NextFunction, Response, Request } from 'express';
 import { body, validationResult } from 'express-validator';
+import { BaseValidator } from './BaseValidator';
 
 
 
-class TodoValidator{
+class TodoValidator extends BaseValidator{
   static getTodoValidatorRule=()=>{
     return [
       body('title').notEmpty().withMessage('The title is required'),
@@ -11,14 +12,6 @@ class TodoValidator{
     ];
   }
 
-  static validate=(req:Request, res:Response, next:NextFunction)=> {
-    const errors=validationResult(req);
-    if(errors.array().length>0){
-      errors.array().forEach(error => req.flash('errors', error.msg));
-      return res.redirect('/dashboard/user');
-    }
-    next();
-  }
 }
 
 export{TodoValidator};

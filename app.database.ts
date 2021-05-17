@@ -3,7 +3,7 @@ import { connect } from 'mongoose';
 class DatabaseConnector {
   static async initDatabase(){
     try{
-      await connect(process.env.DB_URI || 'mongodb://localhost:27017/todb', {
+    return await connect(process.env.DB_URI || 'mongodb://localhost:27017/tododb', {
         useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,

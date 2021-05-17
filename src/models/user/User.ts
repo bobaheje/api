@@ -1,12 +1,12 @@
-import { AutoIncrementID } from "@typegoose/auto-increment";
-import { plugin, prop } from "@typegoose/typegoose";
+import { AutoIncrementID } from '@typegoose/auto-increment';
+import { plugin, prop } from '@typegoose/typegoose';
 
-@plugin(AutoIncrementID,{})
+@plugin(AutoIncrementID, {})
 class User {
   @prop()
-  public _id.:number;
+  public _id?:number;
 
-  @prop({required:true,unique:true})
+  @prop({required:true, unique:true})
   public email?:string;
 
   @prop({required:true})
@@ -17,4 +17,4 @@ class User {
 
 }
 
-export {User}
+export {User};

@@ -1,0 +1,10 @@
+var _navigo = require('navigo');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+var _controllersLoginController = require('./controllers/LoginController');
+let route = _navigoDefault.default();
+const init = () => {
+  router.on('/', () => {
+    _controllersLoginController.LoginController.render();
+  });
+};

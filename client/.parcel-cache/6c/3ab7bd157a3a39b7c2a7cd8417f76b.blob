@@ -1,0 +1,26 @@
+var _navigo = require('navigo');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+var _controllersLoginController = require('./controllers/LoginController');
+let router = new _navigoDefault.default('/');
+let root;
+let loginForm;
+const init = () => {
+  router.on('login', () => {
+    root = document.querySelector('.root');
+    const loginviewDiv = document.createElement('div');
+    loginviewDiv.innerHTML = `${_controllersLoginController.LoginController.render()}`;
+    root.appendChild(loginviewDiv);
+    const btnSubmitLogin = document.querySelector('#btn-sign');
+    btnSubmitLogin.addEventListener('click', signIn);
+  });
+  router.resolve();
+};
+const signIn = async event => {
+  event.preventDefault();
+  const form_data = new FormData();
+  form_data.append('email', loginForm.elements.email.value);
+  form_data.append('password', loginForm.elements.password.value);
+  await _controllersLoginController.LoginController.login(form_data);
+};
+window.addEventListener('load', init);

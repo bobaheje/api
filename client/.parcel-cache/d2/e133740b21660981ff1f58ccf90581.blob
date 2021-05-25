@@ -1,0 +1,28 @@
+var _navigo = require("navigo");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+var _controllersLoginController = require('./controllers/LoginController');
+let router = new _navigoDefault.default('/');
+let root = document.querySelector('.root');
+let loginForm;
+const init = () => {
+  router.on('/', () => {
+    const loginviewDiv = document.createElement('div');
+    loginviewDiv.innerHTML = `${_controllersLoginController.LoginController.render()}`;
+    root.appendChild(loginviewDiv);
+  });
+  // router.on('/login',()=>{
+  // //const formLogin=document.querySelector('#login-form');
+  // console.log(loginForm);
+  // // const btnSubmitLogin=document.querySelector('#btn-sign');
+  // // formLogin.addEventListener('submit',signIn);
+  // });
+  router.resolve();
+};
+const signIn = event => {
+  const form_data = new FormData();
+  form_data.append('email', event.target.elements.email.value);
+  form_data.append('password', event.target.elements.password.value);
+  console.log(form_data);
+};
+window.addEventListener('load', init);

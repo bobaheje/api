@@ -1,0 +1,15 @@
+var _httpsUnpkgComNavigo602SrcIndexJs = require("https://unpkg.com/navigo@6.0.2/src/index.js");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _httpsUnpkgComNavigo602SrcIndexJsDefault = _parcelHelpers.interopDefault(_httpsUnpkgComNavigo602SrcIndexJs);
+var _controllersLoginController = require('./controllers/LoginController');
+let route = _httpsUnpkgComNavigo602SrcIndexJsDefault.default();
+const init = () => {
+  router.on('/', () => {
+    const root = document.querySelector('#root');
+    const login = _controllersLoginController.LoginController.render();
+    console.log(`${login} est`);
+    root.innerHTML = _controllersLoginController.LoginController.render();
+  });
+  router.resolve();
+};
+window.addEventListener('load', init);

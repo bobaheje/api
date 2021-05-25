@@ -1,0 +1,15 @@
+var _navigo = require("navigo");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+let router = new _navigoDefault.default();
+const init = () => {
+  router.on('/', () => {
+    const root = document.querySelector('#root');
+    const loginviewDiv = document.createElement('div');
+    // loginviewDiv.innerHTML=LoginController.render();
+    loginviewDiv.innerHTML = "<p>test</p>";
+    root.appendChild(loginviewDiv);
+  });
+  router.resolve();
+};
+window.addEventListener('load', init);

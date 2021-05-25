@@ -7,7 +7,7 @@ class DatabaseConnector {
         useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
-        useFindAndModify:false
+        useFindAndModify:true
       });
     }
     catch(e){

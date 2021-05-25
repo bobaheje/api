@@ -1,6 +1,11 @@
 import { AutoIncrementID } from '@typegoose/auto-increment';
 import { plugin, prop } from '@typegoose/typegoose';
+import passportLocal from 'passport-local-mongoose';
 
+@plugin(passportLocal, {
+  usernameField:'email',
+  lastLoginField:'last'
+})
 @plugin(AutoIncrementID, {})
 class User {
   @prop()

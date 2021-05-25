@@ -1,0 +1,4 @@
+var _navigo = require('navigo');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+const router = _navigoDefault.default();

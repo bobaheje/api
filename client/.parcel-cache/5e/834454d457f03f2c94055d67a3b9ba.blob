@@ -1,0 +1,11 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "LoginController", function () {
+  return LoginController;
+});
+class LoginController {
+  static login = () => {};
+  static render = () => {
+    return `login`;
+  };
+}

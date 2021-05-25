@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <title>Home page</title>
+  <style>.hide {
+      display: none;
+    }
+</style>
+</head>
+<body>
+  <h1>My home page</h1>
+  <script src="/index.HASH_REF_5fb98dbe211a94e91d6f325cf6d0ad14.js"></script>
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <img class="mx-auto h-12 w-auto" src="/logo.HASH_REF_e5cb0e5a015cb140f5f11ebd394578b2.png" alt="Workflow">
+        <h2 class="mt-6 text-center text-3xl text-gray-900">
+          Sign in to your account
+        </h2>
+      </div>
+      <div class="root">
+        
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

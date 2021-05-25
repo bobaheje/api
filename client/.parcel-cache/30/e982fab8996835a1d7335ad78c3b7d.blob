@@ -1,0 +1,42 @@
+var _navigo = require("navigo");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _navigoDefault = _parcelHelpers.interopDefault(_navigo);
+var _controllersLoginController = require('./controllers/LoginController');
+let router = new _navigoDefault.default('/');
+let root;
+let loginForm;
+let form_data;
+const init = () => {
+  router.on('login', () => {
+    root = document.querySelector('.root');
+    const loginviewDiv = document.createElement('div');
+    loginviewDiv.innerHTML = `${_controllersLoginController.LoginController.render()}`;
+    root.appendChild(loginviewDiv);
+    loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', submitLoginForm);
+    const btnSubmitLogin = document.querySelector('#btn-sign');
+    btnSubmitLogin.addEventListener('click', signIn);
+  });
+  // router.on('/login',()=>{
+  // //const formLogin=document.querySelector('#login-form');
+  // console.log(loginForm);
+  // // const btnSubmitLogin=document.querySelector('#btn-sign');
+  // formLogin.addEventListener('submit',signIn);
+  // });
+  router.resolve();
+};
+const signIn = async event => {
+  event.preventDefault();
+  const form_data = new FormData();
+  form_data.append('email', loginForm.elements.email.value);
+  form_data.append('password', loginForm.elements.password.value);
+  const result = await _controllersLoginController.LoginController.login(form_data);
+  console.log(result);
+};
+const submitLoginForm = async e => {
+  e.preventDefault();
+  console.log(form_data);
+  const result = await _controllersLoginController.LoginController.login(form_data);
+  console.log(result);
+};
+window.addEventListener('load', init);
